@@ -56,8 +56,8 @@ model:
                 hashgrid:
                     min_logres: 5
                     max_logres: 11
-                    dict_size: 22
-                    dim: 8
+                    dict_size: 20
+                    dim: 4
                     range: [-2,2]
                 coarse2fine:
                     enabled: True
