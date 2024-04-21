@@ -29,7 +29,7 @@ function App() {
     }
   }
   return (
-    <div className="slide">
+    <div className="body">
       <div className="nav-bar">
             <div className="nav-bar-title">VRCARD</div>
           </div>
@@ -44,7 +44,7 @@ function App() {
       <div className = "form-container">
         <form onSubmit={handleSubmit}>
           <div className = "form-text">
-            Submit a video here!
+            Select a video to use our VR converter.
           </div>
           <input type="file" name="video-submit" onChange={handleVideo}></input>
           <button type="submit" name="submit-button">Submit</button>
