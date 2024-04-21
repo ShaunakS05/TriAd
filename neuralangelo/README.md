@@ -79,7 +79,8 @@ torchrun --nproc_per_node=${GPUS} projects/neuralangelo/scripts/extract_mesh.py 
     --checkpoint=${CHECKPOINT} \
     --output_file=${OUTPUT_MESH} \
     --resolution=${RESOLUTION} \
-    --block_res=${BLOCK_RES}
+    --block_res=${BLOCK_RES} \
+    --textured
 ```
 Some useful notes:
 - Add `--textured` to extract meshes with textures.
