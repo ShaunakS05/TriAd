@@ -2,25 +2,28 @@ import './App.css';
 import React, { useState } from "react";
 
 function App() {
+
+  const endpoint_Visual = "http://localhost:8000/upload-images"
   const [video, setVideo] = useState(null);
 
   const handleVideo = (event) => {
     setVideo(event.target.files[0]);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const formData = FormData()
+    const formData = new FormData()
     formData.append('video', video);
 
-    fetch('/upload-images', {
+    const response = await fetch(endpoint_Visual, {
       method: 'POST',
       body: formData,
     })
-    .then(response => response.json())
-    .then(data => console.log('Success:', data))
-    .catch((error) => console.error('Error:', error));
+    
+    if(response.ok){
+      console.log("hi")
+    }
   }
   return (
     <div className="slide">
