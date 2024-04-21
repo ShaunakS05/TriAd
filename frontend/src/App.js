@@ -8,6 +8,7 @@ function App() {
 
   const handleVideo = (event) => {
     setVideo(event.target.files[0]);
+    console.log("hi");
   }
 
   const handleSubmit = async (event) => {
@@ -22,7 +23,9 @@ function App() {
     })
     
     if(response.ok){
-      console.log("hi")
+      console.log("hi");
+    } else {
+      console.error("No video selected");
     }
   }
   return (
@@ -43,7 +46,7 @@ function App() {
           <div className = "form-text">
             Submit a video here!
           </div>
-          <input type="file" name="video-submit" onchange={handleVideo}></input>
+          <input type="file" name="video-submit" onChange={handleVideo}></input>
           <button type="submit" name="submit-button">Submit</button>
         </form>
       </div>
