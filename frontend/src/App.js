@@ -18,7 +18,7 @@ function App() {
 
     const response = await fetch(endpoint_Visual, {
       method: 'POST',
-      body: formData,
+      body: formData
     })
     
     if(response.ok){
@@ -43,8 +43,8 @@ function App() {
           <div className = "form-text">
             Submit a video here!
           </div>
-          <input type="file" name="video-submit"></input>
-          <input type="submit" name="submit-button" onchange={handleVideo}></input>
+          <input type="file" name="video-submit" onchange={handleVideo}></input>
+          <button type="submit" name="submit-button">Submit</button>
         </form>
       </div>
     </div>
