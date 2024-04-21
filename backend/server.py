@@ -1,6 +1,5 @@
 from fastapi import FastAPI, File
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from fastapi import UploadFile
 from fastapi.responses import JSONResponse
 import os
@@ -12,7 +11,7 @@ origins =  [
     'http://localhost:3000'
 ]
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware, 
     allow_origins=['*'],
     allow_credentials=True,
     allow_methods=['*'],
@@ -21,7 +20,7 @@ app.add_middleware(
 
 @app.get("/")
 def home():
-    return {"Data", "Test"}
+    return {"Data": "Test"}
 
 @app.post("/upload-images")
 async def upload_images(video: UploadFile):
