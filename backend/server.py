@@ -9,7 +9,7 @@ import shutil
 app = FastAPI()
 
 origins =  [
-
+    'http://localhost:3000'
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -25,8 +25,10 @@ def home():
 
 @app.post("/upload-images")
 async def upload_images(video: UploadFile):
+    contents = await video.read()
     print("hi")
-    file_path = os.path.join("uploads", video.filename)
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(video.file, buffer)
+    #file_path = os.path.join("uploads", video.filename)
+    #os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    #with open(file_path, "wb") as buffer:
+    #    shutil.copyfileobj(video.file, buffer)
+    return True
