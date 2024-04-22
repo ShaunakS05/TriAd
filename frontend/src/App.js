@@ -31,13 +31,13 @@ function App() {
   return (
     <div className="body">
       <div className="nav-bar">
-            <div className="nav-bar-title">VRCARD</div>
+            <div className="nav-bar-title">TRIAD</div>
           </div>
       <div className="image-container">
         <div className="image">
           <div className = "text-container">
-            <div className="main-title">VRCARD</div>
-            <p className="text">THE FUTURE OF POSTCARDS IS HERE</p>
+            <div className="main-title">TRIAD</div>
+            <p className="text">THE FUTURE OF ADVERTISING IS HERE</p>
           </div>
         </div>
       </div>
