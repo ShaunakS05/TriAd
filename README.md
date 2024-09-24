@@ -1,32 +1,44 @@
+TriAd
+by Shaunak Sinha, Brennan Pan, Bryan Xu, Eddie Song
+
 Inspiration
-As four students going into the next school-year looking for off-campus housing, we quickly became frustrated with the lack of options for viewing and touring that many apartments had. With the implementation of TriAd, it would greatly improve buyers' experiences — not just for potential real estate tenants, but for every product thinkable.
+As four students going into the next school year looking for off-campus housing, we quickly became frustrated with the lack of options for viewing and touring that many apartments had. With the implementation of TriAd, we aim to greatly improve buyers' experiences—not just for potential real estate tenants, but for every product imaginable.
 
-What it does
-TriAd takes in a user-inputted video scanning a 360 of a space or around an object which is then taken and converted to a 3D modeled simulation. This simulation is then converted to be viewable in virtual reality through an Oculus Quest or other compatible devices, allowing the user to view a space or object with the detail and scale as it would appear in-person.
+What It Does
+TriAd takes in a user-inputted video scanning a 360-degree view of a space or around an object, which is then converted into a 3D modeled simulation. This simulation is made viewable in virtual reality through an Oculus Quest or other compatible devices, allowing the user to experience a space or object with the detail and scale as it would appear in person.
 
-How we built it
-TriAd was built using the latest technologies and novel research programs to revolutionize the way advertising is done in 3D. Triad works in three parts: a frontend-server framework, a 3D reconstruction software hosted on a Linux Environment and a Mesh to VR program that converts the 3D model into a VR where customers can view the product in 3D. The detailed description is explained below:
+How We Built It
+TriAd was built using the latest technologies and novel research programs to revolutionize the way advertising is done in 3D. TriAd works in three parts: a frontend-server framework, a 3D reconstruction software hosted on a Linux environment, and a Mesh-to-VR program that converts the 3D model into VR where customers can view the product in 3D. The detailed description is explained below:
 
-Front and Backend Frameworks: React front end combined with a FastAPI backend built on Python. The backend connects to a MongoDB database where the users initial video advertisement is placed into MongoDB Database using Mongo
+Front and Backend Frameworks
+A React frontend combined with a FastAPI backend built on Python. The backend connects to a MongoDB database where the user's initial video advertisement is stored.
 
-Image Extraction: The video is then pulled from the MongoDB Database and is ran through a software called FFMPEG where it splices the video into seperate images making it more optimal to run feature extraction and 3D reconstruction.
+Image Extraction
+The video is then pulled from the MongoDB database and run through a software called FFMPEG, which splices the video into separate images, making it more optimal to run feature extraction and 3D reconstruction.
 
-Feature Extraction: The spliced images via FFMPEG are then ran through COLMAP, a AI library used for intelligent feature extraction from images. The feature extraction allows us to determine the relative positioning of each frame in context to the video to make 3D reconstruction more accurate.
+Feature Extraction
+The spliced images via FFMPEG are then run through COLMAP, an AI library used for intelligent feature extraction from images. The feature extraction allows us to determine the relative positioning of each frame in context to the video to make 3D reconstruction more accurate.
 
-3D Reconstruction via NeuralAngelo: NeuralAngelo is a novel 3D reconstruction library built by Nvidia Labs. Our group utilized this advanced software that is often used for research purpose and applied it to our project. NeuralAngelo is trained on around 350 epochs and 20,000 iterations (this is relatively small but the best we could do given our hardware) using the images and the feature extracted via COLMAP.
+3D Reconstruction via NeuralAngelo
+NeuralAngelo is a novel 3D reconstruction library built by Nvidia Labs. Our group utilized this advanced software, which is often used for research purposes, and applied it to our project. NeuralAngelo was trained on around 350 epochs and 20,000 iterations (this is relatively small but the best we could do given our hardware) using the images and the features extracted via COLMAP.
 
-Isosurface Extraction: Finally after a 3D reconstruction is built via Nvidia's NeuralAngelo library, we conduct a Isosurface extraction which converts the 3D model into a mesh with textures that can then be viewed with in a 3D library.
+Isosurface Extraction
+Finally, after a 3D reconstruction is built via Nvidia's NeuralAngelo library, we conduct an isosurface extraction, which converts the 3D model into a mesh with textures that can then be viewed within a 3D library.
 
-After receiving the model as a PLY file, we utilized Aspose 3D API to convert the PLY file into a STL file. Next, we converted the STL file into a more advanced FBX file using Blender headless scripting. Then, we used Blender headless scripting again to send the FBX file straight into the Oculus.
+After receiving the model as a PLY file, we utilized the Aspose 3D API to convert the PLY file into an STL file. Next, we converted the STL file into a more advanced FBX file using Blender headless scripting. Then, we used Blender headless scripting again to send the FBX file straight into the Oculus.
 
-Challenges we ran into
-Throughout our testing and development, we continuously ran into one problem: hardware limitations. With the intensive hardware requirements of NeuralAngelo and its' strenuous runtime tasks, we quickly found that the hardware available at our disposable was able to do the job, but at a very slow rate, taking just over two hours just to produce a 3D reconstruction without texture, color, or intensive detail. Due to the great amount of time that NeuralAngelo originally seemed to take, we spent a lot of time debating over whether to stick to NeuralAngelo for our reconstruction library or choose an alternative like Nvidia's other instant neural graphics primitives library, but ultimately decided to continue with NeuralAngelo. Because of time constraints, we first turned to using virtual machines with vGPUs, but eventually we found that requests for access to ones with powerful enough hardware weren't able to be fulfilled within the 24-hour time period or were reserved strictly for businesses. Additionally, of the one virtual machine that we were able to secure, there was no GUI available and as a result caused certain programs to run inefficiently, forcing us to make do with what we had at our disposal. In our attempts to recreate the 3D models generated by NeuralAngelo in virtual reality, we also faced challenges in our methods at first; using Unity posed many challenges and led to a dead end in terms of complexity of GUI usage and other factors, ultimately leading us to use Blender headless scripting to send to the Oculus, which we also had a fair number of connectivity/running issues with.
+Challenges We Ran Into
+Throughout our testing and development, we continuously ran into one problem: hardware limitations. With the intensive hardware requirements of NeuralAngelo and its strenuous runtime tasks, we quickly found that the hardware available at our disposal was able to do the job but at a very slow rate—taking just over two hours to produce a 3D reconstruction without texture, color, or intensive detail.
 
-Accomplishments that we're proud of
-We are proud of a project that combined so many multifaceted technologies. We used hardware, machine learning, Nvidia GPUs, Linux and Windows environments, databases, a multitude of frameworks, and so many other new technologies and got them to seamlessly integrate with each other to create a creative and unique project.
+Due to the significant amount of time that NeuralAngelo required, we spent a lot of time debating whether to stick with NeuralAngelo for our reconstruction library or choose an alternative like Nvidia's other Instant Neural Graphics Primitives library, but ultimately decided to continue with NeuralAngelo. Because of time constraints, we first turned to using virtual machines with vGPUs, but eventually found that requests for access to ones with powerful enough hardware weren't able to be fulfilled within the 24-hour time period or were reserved strictly for businesses.
 
-What we learned
-We used a LOT of new technologies in this project. It was our first ever time building and training a model using a NVIDIA GPU and using softwares such as COLMAP, NeuralAngelo, Instant-NGP. Additionally, it was the first time we deployed a project on a linux environment and used a relational database such as MongoDB integrated into our project. This was also our first time using hardware and specifically the Oculus VR headset. None of us used hardware before so this was our very first time using it and integrating it into our project.
+Additionally, of the one virtual machine that we were able to secure, there was no GUI available, which caused certain programs to run inefficiently, forcing us to make do with what we had at our disposal. In our attempts to recreate the 3D models generated by NeuralAngelo in virtual reality, we also faced challenges in our methods at first; using Unity posed many challenges and led to a dead end in terms of GUI complexity and other factors. This ultimately led us to use Blender headless scripting to send the models to the Oculus, with which we also had a fair number of connectivity and runtime issues.
 
-What's next for TriAd
-Next for TriAd is deploying on a more powerful VM. We were limited by laptop hardware to run these complex and computational expensive programs and as such the project was way less accurate than what it could be. Additionally, we envision a world where our 3D applications can apply to more than just advertisement but in spatial mapping, industrial design and many other applications.
+Accomplishments That We're Proud Of
+We are proud of creating a project that combined so many multifaceted technologies. We used hardware, machine learning, Nvidia GPUs, Linux and Windows environments, databases, a multitude of frameworks, and many other new technologies, and got them to seamlessly integrate with each other to create a unique and innovative project.
+
+What We Learned
+We used a lot of new technologies in this project. It was our first time building and training a model using an NVIDIA GPU and using software such as COLMAP, NeuralAngelo, and Instant-NGP. Additionally, it was the first time we deployed a project on a Linux environment and integrated a relational database like MongoDB into our project. This was also our first time using hardware, specifically the Oculus VR headset. None of us had used hardware before, so integrating it into our project was a significant learning experience.
+
+What's Next for TriAd
+Next for TriAd is deploying on a more powerful virtual machine. We were limited by laptop hardware when running these complex and computationally expensive programs, making the project less accurate than it could be. Additionally, we envision a world where our 3D applications can apply to more than just advertising but also to spatial mapping, industrial design, and many other applications.
